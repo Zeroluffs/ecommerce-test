@@ -1,69 +1,24 @@
 import { ProductCard } from '@/components/ProductCard'
-import { useProducts } from '@/hooks/useProducts'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { ChangeEvent, useCallback, useState } from 'react'
-import { useQuery, useQueryClient } from 'react-query'
-import { fetchProducts } from '@/Services/Event'
+import { useProductList } from '@/hooks/useProductList'
 
 export function ProductList() {
-  const [isPriceActive, setIsPriceActive] = useState(false)
-  const [isRatingActive, setIsRatingActive] = useState(false)
-  const queryClient = useQueryClient()
+  const {
+    data,
+    isPreviousData,
+    page,
+    setPage,
+    isLoading,
+    isRatingActive,
+    isPriceActive,
+    isFetching,
+    error,
+    products,
+    inputHandler,
+    handleFilterByPrice,
+    handleFilterByRating,
+    numberOfPages,
+  } = useProductList()
 
-  // Function to handle filtering by price
-  const filterProducts = useCallback(
-    (data: FetchResponse) => {
-      if (isPriceActive || isRatingActive) {
-        if (isPriceActive) {
-          data?.products?.sort((a, b) => a.price - b.price)
-        }
-        if (isRatingActive) {
-          data?.products?.sort((a, b) => a.rating - b.rating)
-        }
-        return data
-      } else {
-        return data
-      }
-    },
-    [isPriceActive, isRatingActive]
-  )
-  const [page, setPage] = useState(0)
-  const [inputText, setInputText] = useState('')
-
-  const { isLoading, error, data, isFetching, isPreviousData } = useQuery<FetchResponse>({
-    queryKey: ['products', page],
-
-    queryFn: () => fetchProducts(page),
-    keepPreviousData: true,
-    select: filterProducts,
-  })
-  let inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    let lowerCase = (e.target as HTMLInputElement).value.toLowerCase()
-    setInputText(lowerCase)
-  }
-  let numberOfPages = data!?.total / data!?.limit || 0
-  // let products = data?.products || []
-  let products = data!?.products?.filter((product) => {
-    if (inputText === '') {
-      return product
-    } else {
-      return product.title.toLowerCase().includes(inputText)
-    }
-  })
-  const handleFilterByPrice = () => {
-    setIsPriceActive(!isPriceActive)
-    if (isRatingActive) {
-      setIsRatingActive(false)
-    }
-  }
-
-  // Function to handle filtering by rating
-  const handleFilterByRating = () => {
-    setIsRatingActive(!isRatingActive)
-    if (isPriceActive) {
-      setIsPriceActive(false)
-    }
-  }
   if (isLoading) return 'Loading...'
   if (error) {
     // @ts-ignore
