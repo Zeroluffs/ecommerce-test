@@ -3,6 +3,7 @@ import { ProductList } from '@/components/ProductList'
 import { dehydrate, QueryClient } from 'react-query'
 import { fetchProducts } from '@/Services/Event'
 import { NavBar } from '@/components/NavBar'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 const fetching = async () => {
@@ -15,10 +16,19 @@ const fetching = async () => {
 }
 export default function Home() {
   return (
-    <div className="max-w-7xl m-auto">
-      <NavBar />
-      <ProductList />
-    </div>
+    <>
+      <Head>
+        <title>eCommerce | We sell products that bring you value</title>
+        <meta
+          name="description"
+          content="eCommerce landing page built as a challenge. Next.js, Tailwind CSS, Redux, React Query, and more."
+        />
+      </Head>
+      <div className="max-w-7xl m-auto">
+        <NavBar />
+        <ProductList />
+      </div>
+    </>
   )
 }
 
