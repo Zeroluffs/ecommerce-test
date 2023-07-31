@@ -1,8 +1,7 @@
-export async function fetchProducts() {
+export async function fetchProducts(pageNumber: number) {
   try {
-    const res = await fetch(`https://dummyjson.com/products`)
-    const data = await res.json()
-    return data.products
+    const res = await fetch(`https://dummyjson.com/products?skip=${pageNumber * 10}&limit=10`)
+    return await res.json()
   } catch (err) {
     return err
   }
