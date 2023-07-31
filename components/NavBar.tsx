@@ -5,7 +5,7 @@ export function NavBar() {
   const total = useSelector(totalPrice)
   return (
     <nav>
-      <div className="flex justify-between items-center py-4">
+      <div className="flex justify-between mx-4 md:mx-0 items-center py-4">
         <div className="flex items-center">
           <div className="flex items-center">
             <a href="" className="text-xl text-red-500 md:text-4xl lg:text-6xl font-bold">

@@ -26,7 +26,7 @@ export function ProductList() {
   }
   return (
     <div className={'mt-[64px]'}>
-      <div className={'flex flex-col gap-6'}>
+      <div className={'flex flex-col gap-6 mx-4 md:mx-0'}>
         <input
           onChange={inputHandler}
           placeholder={'Search Product'}
