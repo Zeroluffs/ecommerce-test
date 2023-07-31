@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
+import { RootState } from '@/store/store'
 
 const initialState = {
   items: [] as Product[],
@@ -22,7 +23,7 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer
 
-export const numberOfItems = (state: { cart: { items: string | any[] } }) => state.cart.items.length
+export const numberOfItems = (state: RootState) => state.cart.items.length
 export const totalPrice = (state: { cart: { items: any[] } }) => {
   let total = 0
   state.cart.items.map((item) => {

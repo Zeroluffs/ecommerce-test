@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import { ProductList } from '@/components/ProductList'
 import { dehydrate, QueryClient } from 'react-query'
 import { fetchProducts } from '@/Services/Event'
+import { NavBar } from '@/components/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 const fetching = async () => {
@@ -15,6 +16,7 @@ const fetching = async () => {
 export default function Home() {
   return (
     <div className="max-w-7xl m-auto">
+      <NavBar />
       <ProductList />
     </div>
   )
