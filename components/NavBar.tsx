@@ -13,7 +13,7 @@ export function NavBar() {
             </a>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center mt-1">
           <a
             href="#"
             className="text-gray-800 text-sm md:text-2xl  lg:text-3xl mx-4 hover:text-blue-500">
