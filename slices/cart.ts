@@ -6,6 +6,7 @@ const initialState = {
   error: null,
 }
 export const addToCart = createAsyncThunk('cart/addToCart', async (product: Product) => {
+  console.log('product', product)
   return product
 })
 const cartSlice = createSlice({

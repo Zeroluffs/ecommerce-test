@@ -1,9 +1,16 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import { addToCart } from '@/slices/cart'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/store/store'
 
 export function ProductCard(product: Product) {
   const [showFullText, setShowFullText] = useState(false)
   const longText = product.description
+  const dispatch = useDispatch<AppDispatch>()
+  const onClickCart = async () => {
+    dispatch(addToCart(product))
+  }
   return (
     <div className="w-[300px] flex flex-col gap-[12px] shadow-md rounded-sm">
       <div>
@@ -29,7 +36,9 @@ export function ProductCard(product: Product) {
         <p>${product.price}</p>
         <p>Reviews: {product.rating}</p>
       </div>
-      <button className="px-4 py-2 text-white m-auto mb-4  bg-red-500 w-[212px] rounded-xl">
+      <button
+        onClick={onClickCart}
+        className="px-4 py-2 text-white m-auto mb-4  bg-red-500 w-[212px] rounded-xl">
         Add to Cart
       </button>
     </div>
