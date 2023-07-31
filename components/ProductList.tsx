@@ -37,14 +37,18 @@ export function ProductList() {
           <button
             onClick={handleFilterByPrice}
             className={`border p-2 ${
-              isPriceActive ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+              isPriceActive
+                ? 'bg-blue-500 text-white'
+                : 'bg-white text-blue-500 hover:bg-blue-200 duration-300'
             }`}>
             Filter by Price
           </button>
           <button
             onClick={handleFilterByRating}
             className={`border p-2 ${
-              isRatingActive ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+              isRatingActive
+                ? 'bg-blue-500 text-white'
+                : 'bg-white text-blue-500 hover:bg-blue-200 duration-300'
             }`}>
             Filter by Rating
           </button>
@@ -61,7 +65,9 @@ export function ProductList() {
       {/*<span>Current Page: {page + 1}</span>*/}
       <div className={'flex  flex-row justify-center gap-6 my-6'}>
         <button
-          className={'text-xl bg-blue-500 text-white p-2 rounded-xl disabled:opacity-50'}
+          className={
+            'text-xl bg-blue-500 hover:bg-blue-700 active:bg-blue-900 duration-300 text-white p-2 rounded-xl disabled:opacity-50'
+          }
           onClick={() => setPage((old) => Math.max(old - 1, 0))}
           disabled={page === 0}>
           Previous
@@ -70,7 +76,9 @@ export function ProductList() {
           {page + 1} of {numberOfPages}
         </span>
         <button
-          className={'text-xl bg-blue-500 text-white p-2 rounded-xl disabled:opacity-50'}
+          className={
+            'text-xl bg-blue-500 text-white p-2 rounded-xl hover:bg-blue-700 active:bg-blue-900 duration-300 disabled:opacity-50'
+          }
           onClick={() => {
             if (page === numberOfPages - 1) return
             if (!isPreviousData) {

@@ -38,7 +38,7 @@ export function ProductCard(product: Product) {
       </div>
       <button
         onClick={onClickCart}
-        className="px-4 py-2 text-white m-auto mb-4  bg-red-500 w-[212px] rounded-xl">
+        className="px-4 py-2 text-white m-auto mb-4 active:bg-red-950 hover:bg-red-700 duration-300  bg-red-500 w-[212px] rounded-xl">
         Add to Cart
       </button>
     </div>
