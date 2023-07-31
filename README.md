@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+I built the landing page of an ecommerce site where you can see the lists of products, filter them by price, ratings and name. Once you add them to cart it updates with the amount of items that you have and also their total
+
+![image](https://github.com/Zeroluffs/ecommerce-test/assets/39860554/6b5790e7-449c-4f14-ad89-b6c41db7a06e)
+
+
 First, run the development server:
 
 ```bash
