@@ -4,19 +4,19 @@ import { useProductList } from '@/hooks/useProductList'
 export function ProductList() {
   const {
     data,
-    isPreviousData,
-    page,
-    setPage,
     isLoading,
     isRatingActive,
     isPriceActive,
-    isFetching,
     error,
     products,
     inputHandler,
     handleFilterByPrice,
     handleFilterByRating,
+    setPage,
+    page,
     numberOfPages,
+    isFetching,
+    isPreviousData,
   } = useProductList()
 
   if (isLoading) return 'Loading...'
@@ -61,23 +61,26 @@ export function ProductList() {
       {/*<span>Current Page: {page + 1}</span>*/}
       <div className={'flex  flex-row justify-center gap-6 my-6'}>
         <button
-          className={'text-xl text-blue-500'}
+          className={'text-xl bg-blue-500 text-white p-2 rounded-xl disabled:opacity-50'}
           onClick={() => setPage((old) => Math.max(old - 1, 0))}
           disabled={page === 0}>
-          Previous Page
+          Previous
         </button>{' '}
+        <span className={'justify-center mt-2 text-lg'}>
+          {page + 1} of {numberOfPages}
+        </span>
         <button
-          className={'text-xl text-blue-500'}
+          className={'text-xl bg-blue-500 text-white p-2 rounded-xl disabled:opacity-50'}
           onClick={() => {
+            if (page === numberOfPages - 1) return
             if (!isPreviousData) {
               setPage((old) => old + 1)
             }
           }}
           // Disable the Next Page button until we know a next page is available
-          disabled={page === numberOfPages}>
-          Next Page
+          disabled={page === numberOfPages - 1 || isFetching}>
+          Next
         </button>
-        {isFetching ? <span> Loading...</span> : null} {/*<ProductList />*/}
       </div>
     </div>
   )
