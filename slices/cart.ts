@@ -23,10 +23,10 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer
 
-export const numberOfItems = (state: RootState) => state.cart.items.length
-export const totalPrice = (state: { cart: { items: any[] } }) => {
+export const numberOfItems = (state: RootState) => state.items.length
+export const totalPrice = (state: RootState) => {
   let total = 0
-  state.cart.items.map((item) => {
+  state.items.map((item) => {
     total += item.price
   })
   return total
