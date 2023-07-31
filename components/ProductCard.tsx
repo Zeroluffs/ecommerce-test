@@ -13,8 +13,13 @@ export function ProductCard(product: Product) {
   }
   return (
     <div className="w-[300px] flex flex-col gap-[12px] shadow-md rounded-sm">
-      <div>
-        <Image src={product.images[0]} alt={product.title} width={300} height={300} />
+      <div className={'relative w-[300px] h-[344px]'}>
+        <Image
+          src={product.images[0]}
+          alt={product.title}
+          fill
+          className={'w-[300px] h-[344px] object-cover'}
+        />
       </div>
       <div className="mx-2">
         <h1 className="text-lg font-semibold">{product.title}</h1>
