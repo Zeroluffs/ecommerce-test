@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useQuery } from "react-query";
 import { fetchProducts } from "@/Services/Event";
+import { ProductCard } from "@/components/ProductCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <div>
       <h1>{products[0].title}</h1>
+      <ProductCard {...products[0]} />
     </div>
   );
 }
