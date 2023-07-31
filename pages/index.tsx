@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { useQuery } from 'react-query'
 import { fetchProducts } from '@/Services/Event'
 import { ProductCard } from '@/components/ProductCard'
+import { ProductList } from '@/components/ProductList'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,14 +18,14 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl m-auto">
-      <div className={'flex justify-center items-center'}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
-          {products.map((product, index) => (
-            <ProductCard key={index} {...product} />
-          ))}
-        </div>
-      </div>
-      d{' '}
+      {/*<div className={'flex justify-center items-center'}>*/}
+      {/*  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">*/}
+      {/*    {products.map((product, index) => (*/}
+      {/*      <ProductCard key={index} {...product} />*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      <ProductList />
     </div>
   )
 }
